@@ -1,0 +1,10 @@
+# Ignore all .env files recursively
+**/.env
+
+# Optional: Ignore node_modules
+**/node_modules/
+
+# Optional: Ignore logs
+*.log
+
+
