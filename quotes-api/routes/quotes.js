@@ -30,7 +30,7 @@ router.get('/list', async (req, res) => {
 
 router.get('/random',async(req, res) => {
     const randomNumber = Math.floor(Math.random() * 21);
-    const QuotesObject = await Quotes.find({});
+    const quotesObject = await Quotes.find({});
     const quoteItem = quotesObject[0].quotes[randomNumber];
     res.send(quoteItem);
 });

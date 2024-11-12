@@ -18,15 +18,21 @@ require('dotenv').config()
 // });
 
 //mongodb connection using async/await
-async function conneciton() {
+async function connectDB() {
     try{
-        await mongoose.connect(process.env.DB_CONNECTION_URL, {
-            userNewUrlParser: true,
-            useUnifiedTopology: true, // to avoid deprecation warnings
-        });
+
+        await mongoose.connect(process.env.DB_CONNECTION_URL);
+        // await mongoose.connect(process.env.DB_CONNECTION_URL, {
+        //     useNewUrlParser: true,
+        //     useUnifiedTopology: true, // to avoid deprecation warnings
+        // });
         console.log('MongoDB conencted');
-    } catch (err) {}
+    } catch (err) {
+        console.error('MongoDB connection error:', err);
+    }
 }
+
+connectDB()
 
 // allow localhost access in frontend
 
