@@ -8,13 +8,25 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 require('dotenv').config()
 
-mongoose.connect(process.env.DB_CONNECTION_URL, { useNewUrlParser: true}, (err) => {
-    if(err){
-        console.error(err);
-    } else {
-        console.log("connected");
-    }
-});
+// mongodb no longer takes callback function with the connect() method
+// mongoose.connect(process.env.DB_CONNECTION_URL, { useNewUrlParser: true}, (err) => {
+//     if(err){
+//         console.error(err);
+//     } else {
+//         console.log("connected");
+//     }
+// });
+
+//mongodb connection using async/await
+async function conneciton() {
+    try{
+        await mongoose.connect(process.env.DB_CONNECTION_URL, {
+            userNewUrlParser: true,
+            useUnifiedTopology: true, // to avoid deprecation warnings
+        });
+        console.log('MongoDB conencted');
+    } catch (err) {}
+}
 
 // allow localhost access in frontend
 
