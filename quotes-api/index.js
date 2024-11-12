@@ -23,24 +23,24 @@ app.use(cors())
 // routes for quotes
 const quotesRoute = require('./routes/quotes');
 app.use(bodyParser.json());
-app.use('quotes', quotesRoute);
+app.use('/quotes', quotesRoute);
 app.get('/', (req, res) => {
     res.send('Hello again')
 });
 
-app.get('/',(req, res) => {
-    res.send('Hey, want a quote?')
-});
+// app.get('/',(req, res) => {
+//     res.send('Hey, want a quote?')
+// });
 
-app.get('/quotesList',(req, res) => {
-    res.send({'quotesList': quotesJSONArray});
-});
+// app.get('/quotesList',(req, res) => {
+//     res.send({'quotesList': quotesJSONArray});
+// });
 
-app.get('/randomQuote', (req, res) => {
-    const randomNumber = Math.floor(Math.random() * 21);
-    const quoteItem = quotesJSONArray[randomNumber];
-    res.send(quoteItem);
-});
+// app.get('/randomQuote', (req, res) => {
+//     const randomNumber = Math.floor(Math.random() * 21);
+//     const quoteItem = quotesJSONArray[randomNumber];
+//     res.send(quoteItem);
+// });
 
 app.listen(port, () => {
     console.log(`Example of app listening at http://localhost:${port}`)
