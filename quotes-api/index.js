@@ -2,6 +2,31 @@ const express = require('express');
 const app = express();
 const quotesJSONArray = require('./quoteSource.json');
 const port = 3000;
+// mongodb connection setup
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors')
+require('dotenv').config()
+
+mongoose.connect(process.env.DB_CONNECTION_URL, { useNewUrlParser: true}, (err) => {
+    if(err){
+        console.error(err);
+    } else {
+        console.log("connected");
+    }
+});
+
+// allow localhost access in frontend
+
+app.use(cors())
+
+// routes for quotes
+const quotesRoute = require('./routes/quotes');
+app.use(bodyParser.json());
+app.use('quotes', quotesRoute);
+app.get('/', (req, res) => {
+    res.send('Hello again')
+});
 
 app.get('/',(req, res) => {
     res.send('Hey, want a quote?')
