@@ -29,6 +29,9 @@ router.get('/list', async (req, res) => {
 });
 
 router.get('/random',async(req, res) => {
+    // try{
+    //     const quotesObject = await Quotes.find({})
+    // }
     const randomNumber = Math.floor(Math.random() * 21);
     const quotesObject = await Quotes.find({});
     const quoteItem = quotesObject[0].quotes[randomNumber];

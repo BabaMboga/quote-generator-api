@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 require('dotenv').config()
 
-// mongodb no longer takes callback function with the connect() method
+// // mongodb Connection
 // mongoose.connect(process.env.DB_CONNECTION_URL, { useNewUrlParser: true}, (err) => {
 //     if(err){
 //         console.error(err);
@@ -32,7 +32,7 @@ async function connectDB() {
     }
 }
 
-connectDB()
+// connectDB()
 
 // allow localhost access in frontend
 
