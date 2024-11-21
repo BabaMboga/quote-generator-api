@@ -7,4 +7,4 @@ const QuotesSchema = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Quotes', QuotesSchema, "Quotes")
+module.exports = mongoose.model('quotes', QuotesSchema,)
